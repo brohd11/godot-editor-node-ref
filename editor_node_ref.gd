@@ -251,8 +251,9 @@ func _popuplate_dynamic_references():
 	_get_node._populate_filesystem_popup()
 	#_get_node._populate_filesystem_bottom_popup()
 	
-	
-	var editor_script_changed = EditorInterface.get_script_editor().editor_script_changed
+	# use tab container, otherwise this never fires when a non script file is selected
+	var editor_script_changed = _get_node.get_script_editor_tab_container().tab_changed
+	#var editor_script_changed = EditorInterface.get_script_editor().editor_script_changed
 	
 	_register_dynamic(Nodes.SCRIPT_EDITOR_POPUP, _get_node.get_script_editor_popup, editor_script_changed, _on_script_editor_references_updated)
 	_register_dynamic(Nodes.SCRIPT_EDITOR_CODE_POPUP, _get_node.get_script_editor_code_popup, editor_script_changed)
