@@ -1,7 +1,5 @@
 class_name EditorNodeRef #! singleton-module
-extends SingletonBase
-const SingletonBase = Singletons.Base
-
+extends "res://addons/addon_lib/brohd/singleton/singleton_base.gd" #! ext Singletons.Base
 
 const _GET_REF_SCRIPTS = {
 	4: {
