@@ -1,5 +1,7 @@
 class_name EditorNodeRef #! singleton-module
-extends "res://addons/addon_lib/brohd/singleton/singleton_base.gd" #! ext Singletons.Base
+extends "res://addons/addon_lib/singleton/singleton_base.gd" #! ext Singletons.Base
+
+const SignalHandler = UtilR.Signals.SignalHandler
 
 const _GET_REF_SCRIPTS = {
 	4: {

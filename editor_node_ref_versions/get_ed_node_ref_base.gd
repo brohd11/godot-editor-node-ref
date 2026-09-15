@@ -1,7 +1,7 @@
 
 # This is the 4.4 functionality, change what must be in other versions
 
-const UNode = preload("uid://dsywt12xnn7oh") #! resolve ALibRuntime.Utils.UNode
+const UNode = preload("uid://bnf4h0107r8b4") #! resolve UtilR.URNode
 
 var node_types_dict = {}
 ##
@@ -43,11 +43,15 @@ func get_script_editor_code_popup(): # Dynamic
 	var code_edit = EditorInterface.get_script_editor().get_current_editor().get_base_editor()
 	var script_tab_dummy = code_edit.get_parent().get_parent().get_parent()
 	if script_tab_dummy.get_script() != null: # maybe give it a path
-		for c in script_tab_dummy.get_children():
+		for c in script_tab_dummy.find_children("*", "PopupMenu", true, false):
 			if c is PopupMenu:
 				return c
 	
-	return current.get_child(1)
+	if current.get_child_count() > 1 and current.get_child(1) is PopupMenu:
+		return current.get_child(1)
+	
+	printerr("EditorNodeRef-Could not get ScriptEditor code popup.")
+	return null
 ##
 func get_script_editor_popup(): # Dynamic
 	return EditorInterface.get_script_editor().get_child(1)
