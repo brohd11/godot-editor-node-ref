@@ -29,7 +29,8 @@ options:
 exports:
   -
     source: "res://addons/addon_lib/editor_node_ref"
-    export_folder: "editor-node-ref{{version=editor_node_ref}}/editor_node_ref"
+    export_name: "editor-node-ref{{version=editor_node_ref}}"
+    export_folder: "addons/addon_lib/editor_node_ref"
     exclude:
       directories:
         - "res://addons/addon_lib/editor_node_ref/_export_ignore"
