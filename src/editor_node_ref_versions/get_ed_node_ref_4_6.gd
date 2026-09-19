@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_base.gd"
+extends "res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_base.gd"
 
 func get_scene_tree_popup():
 	var scene_tree_dock = get_node_from_dict("SceneTreeDock")

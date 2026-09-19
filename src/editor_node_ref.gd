@@ -2,6 +2,9 @@ class_name EditorNodeRef #! singleton-module
 extends "res://addons/addon_lib/singleton/singleton_base.gd" #! ext Singletons.Base
 
 const SignalHandler = UtilR.Signals.SignalHandler
+const UVersion = UtilR.UVersion
+
+const Refs = preload("res://addons/addon_lib/editor_node_ref/src/nodes/refs.gd")
 
 const _GET_REF_SCRIPTS = {
 	4: {
@@ -13,7 +16,7 @@ const _GET_REF_SCRIPTS = {
 }
 
 const _NODE_NAME = "EditorNodeRef"
-const PE_STRIP_CAST_SCRIPT = preload("res://addons/addon_lib/editor_node_ref/editor_node_ref.gd")
+const PE_STRIP_CAST_SCRIPT = preload("res://addons/addon_lib/editor_node_ref/src/editor_node_ref.gd")
 
 static func get_singleton_name():
 	return "EditorNodeRef"
@@ -273,11 +276,11 @@ static func check_nodes():
 
 
 class _NodeRefScripts:
-	const NodeRefBase = preload("res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_base.gd")
-	const NodeRef_44 = preload("res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_4_4.gd")
-	const NodeRef_45 = preload("res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_4_5.gd")
-	const NodeRef_46 = preload("res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_4_6.gd")
-	const NodeRef_47 = preload("res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_4_7.gd")
+	const NodeRefBase = preload("res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_base.gd")
+	const NodeRef_44 = preload("res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_4.gd")
+	const NodeRef_45 = preload("res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_5.gd")
+	const NodeRef_46 = preload("res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_6.gd")
+	const NodeRef_47 = preload("res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_7.gd")
 
 
 static func _test_get_node():

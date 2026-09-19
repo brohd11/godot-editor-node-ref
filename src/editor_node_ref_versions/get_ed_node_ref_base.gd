@@ -1,7 +1,7 @@
 
 # This is the 4.4 functionality, change what must be in other versions
 
-const UNode = preload("uid://bnf4h0107r8b4") #! resolve UtilR.URNode
+const UNode = preload("uid://bnf4h0107r8b4") #! resolve UtilR.UNode
 
 var node_types_dict = {}
 ##

@@ -1,4 +1,4 @@
-extends "res://addons/addon_lib/editor_node_ref/editor_node_ref_versions/get_ed_node_ref_4_6.gd"
+extends "res://addons/addon_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_6.gd"
 
 func get_editor_log_button_container():
 	return get_editor_log().get_child(1).get_child(0).get_child(1)
