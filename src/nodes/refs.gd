@@ -1,7 +1,7 @@
 
-const BottomPanel = preload("res://addons/addon_lib/editor_node_ref/src/nodes/bottom_panel.gd")
-const Docks = preload("res://addons/addon_lib/editor_node_ref/src/nodes/docks.gd")
-const FileSystem = preload("res://addons/addon_lib/editor_node_ref/src/nodes/filesystem.gd")
+const BottomPanel = preload("res://addons/_lib/editor_node_ref/src/nodes/bottom_panel.gd")
+const Docks = preload("res://addons/_lib/editor_node_ref/src/nodes/docks.gd")
+const FileSystem = preload("res://addons/_lib/editor_node_ref/src/nodes/filesystem.gd")
 
 
 class MainScreen:

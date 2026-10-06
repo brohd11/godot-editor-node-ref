@@ -1,5 +1,5 @@
 
-const PopupID = preload("res://addons/addon_lib/editor_node_ref/src/nodes/filesystem/popup_id.gd")
+const PopupID = preload("res://addons/_lib/editor_node_ref/src/nodes/filesystem/popup_id.gd")
 const UTree = preload("uid://1gwputufojp6") #! resolve UtilR.Nodes.Trees.UTree
 
 static func get_tree():
