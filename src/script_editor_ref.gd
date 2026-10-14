@@ -1,5 +1,5 @@
 class_name ScriptEditorRef
-extends "res://addons/_lib/singleton/singleton_base.gd" #! ext Singletons.Base
+extends "res://addons/_lib/singleton/src/singleton_base.gd" #! ext Singletons.Base
 ## Singleton for accessing script editor nodes and signals. Manages the signals for the current script editor.
 
 const PE_STRIP_CAST_SCRIPT = preload("res://addons/_lib/editor_node_ref/src/script_editor_ref.gd")

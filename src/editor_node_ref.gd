@@ -1,5 +1,5 @@
 class_name EditorNodeRef #! singleton-module
-extends "res://addons/_lib/singleton/singleton_base.gd" #! ext Singletons.Base
+extends "res://addons/_lib/singleton/src/singleton_base.gd" #! ext Singletons.Base
 
 const SignalHandler = UtilR.Signals.SignalHandler
 const UVersion = UtilR.UVersion
