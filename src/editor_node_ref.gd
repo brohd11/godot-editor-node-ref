@@ -1,3 +1,4 @@
+#! namespace EditorNodes class EditorNodeRef
 class_name EditorNodeRef #! singleton-module
 extends "res://addons/_lib/singleton/src/singleton_base.gd" #! ext Singletons.Base
 

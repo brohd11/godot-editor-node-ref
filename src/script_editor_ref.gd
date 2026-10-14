@@ -1,3 +1,4 @@
+#! namespace EditorNodes class ScriptEditorRef
 class_name ScriptEditorRef
 extends "res://addons/_lib/singleton/src/singleton_base.gd" #! ext Singletons.Base
 ## Singleton for accessing script editor nodes and signals. Manages the signals for the current script editor.
