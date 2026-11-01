@@ -6,8 +6,10 @@ extends "res://addons/_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_n
 func get_title_buttons():
 	return null
 
+## The script list's own menu. The File menu is wired to the same handler, so search only the list.
 func get_script_editor_popup(): # Dynamic
-	return find_by_signal(EditorInterface.get_script_editor(), "PopupMenu", "id_pressed", "DocumentEditorContainer::_menu_option", true)
+	var document_list = EditorInterface.get_script_editor().find_children("*", "DocumentList", true, false).pop_front()
+	return find_by_signal(document_list, "PopupMenu", "id_pressed", "DocumentEditorContainer::_menu_option")
 
 func get_script_editor_tab_container():
 	return find_by_signal(EditorInterface.get_script_editor(), "TabContainer", "tab_changed", "DocumentEditorContainer::ensure_select_current", true)

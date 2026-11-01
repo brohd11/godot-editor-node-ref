@@ -27,7 +27,7 @@ const EXPECT = {
 	"FILESYSTEM_BOTTOM_FOLDER_COLOR_POPUP": {"class": "PopupMenu", "optional": true},
 	"FILESYSTEM_BOTTOM_CREATE_POPUP": {"class": "PopupMenu", "optional": true},
 	"SCRIPT_EDITOR_POPUP": {"class": "PopupMenu", "sig": ["id_pressed", "ScriptEditor::_menu_option"],
-		8: {"sig": ["id_pressed", "DocumentEditorContainer::_menu_option"]}},
+		8: {"sig": ["id_pressed", "DocumentEditorContainer::_menu_option"], "parent": "DocumentList"}},
 	"SCRIPT_EDITOR_CODE_POPUP": {"class": "PopupMenu", "sig": ["id_pressed", "::_edit_option"]},
 	"SCRIPT_EDITOR_SYNTAX_POPUP": {"class": "PopupMenu", "sig": ["id_pressed", "::_change_syntax_highlighter"]},
 	"SCRIPT_EDITOR_MENU_BAR": {"class": "HBoxContainer", "anc": "ScriptEditor", "child": "MenuButton"},
