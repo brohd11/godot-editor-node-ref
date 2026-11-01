@@ -171,26 +171,22 @@ var populated := false
 func _ready() -> void:
 	var version = Engine.get_version_info()
 	var major = version.major
-	var minor = version.minor
-	
-	var script
-	var major_dict = _GET_REF_SCRIPTS.get(major)
-	var minor_script = major_dict.get(minor)
-	if minor_script == null:
-		var attempted_minor = minor
-		if minor < 4:
-			minor = 4
-		while not is_instance_valid(minor_script) and minor > 4: # 4.4 is earliest support
-			minor -= 1
-			minor_script = major_dict.get(minor)
-		print("Error getting version %s.%s EditorNodeRefs script, reverting to %s.%s" % [major, attempted_minor, major, minor])
-		script = major_dict.get(minor)
-	else:
-		script = major_dict.get(minor)
-	
-	_get_node = script.new()
-	
+	var minor = _ref_minor_for(major, version.minor)
+	if minor != version.minor:
+		print("Error getting version %s.%s EditorNodeRefs script, reverting to %s.%s" % [major, version.minor, major, minor])
+
+	_get_node = _GET_REF_SCRIPTS[major][minor].new()
+
 	_popupulate_references.call_deferred()
+
+## The minor whose ref script serves `minor`: itself, else the nearest older one; 4.4 is the floor.
+static func _ref_minor_for(major:int, minor:int) -> int:
+	var major_dict = _GET_REF_SCRIPTS.get(major)
+	if minor < 4:
+		return 4
+	while not major_dict.has(minor) and minor > 4:
+		minor -= 1
+	return minor
 
 
 func _popupulate_references() -> void:
