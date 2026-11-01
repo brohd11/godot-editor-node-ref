@@ -5,7 +5,8 @@ extends RefCounted
 ## project per version, then runs that version's editor on it in parallel. It only runs inside a
 ## PackageExporter test workspace; elsewhere, addons/ holds far more than this package needs.
 
-const VERSIONS = ["4.4.1-stable", "4.5.1-stable", "4.6.3-stable", "4.7-stable"]
+# A pre-release is an early warning for the next minor; swap it for the stable once released.
+const VERSIONS = ["4.4.1-stable", "4.5.1-stable", "4.6.3-stable", "4.7.2-stable", "4.8-beta2"]
 const SUITE = "res://addons/_lib/editor_node_ref/_export_ignore/test/editor_node_ref_test.gd"
 const TEST_RUNNER = "res://addons/_lib/util_r/src/test/test_runner.gd"
 const WORKSPACE_MARKER = "res://addons/pe_release_autorun"

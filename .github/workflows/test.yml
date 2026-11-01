@@ -10,4 +10,4 @@ jobs:
   test:
     uses: brohd11/godot-package-exporter/.github/workflows/package-test.yml@main
     with:
-      godot-versions: '["4.7-stable"]'
+      godot-versions: '["4.7.2-stable"]'

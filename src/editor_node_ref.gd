@@ -13,6 +13,7 @@ const _GET_REF_SCRIPTS = {
 		5: _NodeRefScripts.NodeRef_45,
 		6: _NodeRefScripts.NodeRef_46,
 		7: _NodeRefScripts.NodeRef_47,
+		8: _NodeRefScripts.NodeRef_48,
 	}
 }
 
@@ -65,7 +66,8 @@ func _register_dynamic(key, method:Callable, _signal:Signal, callback=null, call
 		_registry[key] = method.call()
 	
 	var signal_handler = SignalHandler.create_signal_adapter(update_var, callback, callback_pass_args)
-	_signal.connect(signal_handler)
+	# Deferred: mid-switch the new tab's menus aren't visible and script_tabs hasn't reparented yet.
+	_signal.connect(signal_handler, CONNECT_DEFERRED)
 	
 	_dynamic_data[key] = {"signal":_signal, "handler": signal_handler}
 
@@ -156,7 +158,7 @@ enum Nodes {
 	SCRIPT_EDITOR_TAB_CONTAINER,
 }
 
-const _TYPES = [&"TabContainer", &"SideDockTabContainer", &"SceneTreeDock", &"EditorSceneTabs", &"EditorBottomPanel", &"EditorLog", &"EditorDock"]
+const _TYPES = [&"TabContainer", &"SideDockTabContainer", &"SceneTreeDock", &"EditorSceneTabs", &"EditorBottomPanel", &"EditorLog", &"EditorDock", &"EditorTitleBar", &"CanvasItemEditor"]
 
 
 var _registry:Dictionary = {}
@@ -238,7 +240,10 @@ func _popupulate_references() -> void:
 	
 	##
 	_popuplate_dynamic_references()
-	
+	# Tabs restored before registration never emit tab_changed for us; a frame lets them settle.
+	await get_tree().process_frame
+	refresh_dynamic_refs()
+
 	populated = true
 
 func _popuplate_dynamic_references():
@@ -278,6 +283,7 @@ class _NodeRefScripts:
 	const NodeRef_45 = preload("res://addons/_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_5.gd")
 	const NodeRef_46 = preload("res://addons/_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_6.gd")
 	const NodeRef_47 = preload("res://addons/_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_7.gd")
+	const NodeRef_48 = preload("res://addons/_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_8.gd")
 
 
 static func _test_get_node():

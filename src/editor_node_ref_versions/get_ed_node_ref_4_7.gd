@@ -1,7 +1,9 @@
 extends "res://addons/_lib/editor_node_ref/src/editor_node_ref_versions/get_ed_node_ref_4_6.gd"
 
+## The filter toggles moved into a nested row; the container is now the clear button's row.
 func get_editor_log_button_container():
-	return get_editor_log().get_child(1).get_child(0).get_child(1)
+	var clear_button = find_by_signal(get_editor_log(), "Button", "pressed", "EditorLog::_clear_request", true)
+	return clear_button.get_parent() if clear_button != null else null
 
 func get_script_editor_menu_bar(): # Dynamic
 	var menu_bars_hbox = EditorInterface.get_script_editor().get_child(0).get_child(0)
@@ -49,6 +51,3 @@ func get_docks():
 		if tab.name.begins_with("DockSlot"):
 			docks.append(tab)
 	return docks
-
-func get_closed_docks_node():
-	return EditorInterface.get_base_control().get_child(11) # magic number 11, will this be reliable?
