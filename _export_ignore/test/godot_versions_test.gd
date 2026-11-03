@@ -3,14 +3,14 @@ extends RefCounted
 ## Runs editor_node_ref_test.gd on every other supported Godot. The toolchain needs 4.6+, so CI
 ## resolves deps once and this copies the resolved addons (minus the toolchain) into a fresh
 ## project per version, then runs that version's editor on it in parallel. It only runs inside a
-## PackageExporter test workspace; elsewhere, addons/ holds far more than this package needs.
+## gdpackage test workspace; elsewhere, addons/ holds far more than this package needs.
 
 # A pre-release is an early warning for the next minor; swap it for the stable once released.
 const VERSIONS = ["4.4.1-stable", "4.5.1-stable", "4.6.3-stable", "4.7.2-stable", "4.8-beta2"]
 const SUITE = "res://addons/_lib/editor_node_ref/_export_ignore/test/editor_node_ref_test.gd"
 const TEST_RUNNER = "res://addons/_lib/util_r/src/test/test_runner.gd"
 const WORKSPACE_MARKER = "res://addons/pe_release_autorun"
-const SKIP_DIRS = ["package_exporter", "pe_release_autorun", ".git", ".godot"]
+const SKIP_DIRS = ["gdpackage", "package_exporter", "pe_release_autorun", ".git", ".godot"]
 const PROJECTS_DIR = "user://editor_node_ref_versions"
 const AUTORUN_DIR = "enr_autorun"
 const RESULT_PREFIX = "ENR_RESULT "
@@ -49,7 +49,7 @@ func _finish(result:Dictionary, code:int) -> void:
 
 static func run_tests() -> Dictionary:
 	if not DirAccess.dir_exists_absolute(WORKSPACE_MARKER):
-		return {"result": 0, "output": ["skipped: not in a PackageExporter test workspace"]}
+		return {"result": 0, "output": ["skipped: not in a gdpackage test workspace"]}
 	var out: Array = []
 	var running = Engine.get_version_info()
 	var runs = []
@@ -104,7 +104,7 @@ static func _major_minor(version:String) -> Array:
 
 
 ## {path} of a Godot editor for `version`: ENR_GODOT_<major>_<minor> if set, else on Linux a
-## godot-builds download kept under the package_exporter cache, which CI already caches.
+## godot-builds download kept under the gdpackage cache, which CI already caches.
 static func _godot_for(version:String) -> Dictionary:
 	var mm = _major_minor(version)
 	var env = "ENR_GODOT_%d_%d" % mm
@@ -112,7 +112,7 @@ static func _godot_for(version:String) -> Dictionary:
 		return {"path": OS.get_environment(env)}
 	if OS.get_name() != "Linux":
 		return {"error": "set %s to a Godot %s editor binary" % [env, version]}
-	var dir = OS.get_cache_dir().path_join("package_exporter").path_join("godot").path_join(version)
+	var dir = OS.get_cache_dir().path_join("gdpackage").path_join("godot").path_join(version)
 	var bin = dir.path_join("godot")
 	if FileAccess.file_exists(bin):
 		return {"path": bin}
