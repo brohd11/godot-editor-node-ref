@@ -154,7 +154,9 @@ static func _make_project(version:String, mm:Array) -> String:
 static func _result_of(run:Dictionary) -> Dictionary:
 	if run.error != "":
 		return {"ok": false, "why": run.error, "lines": []}
-	var text = FileAccess.get_file_as_string(run.log)
+	# 4.4 colours its log lines, which would hide them from the SCRIPT ERROR check.
+	var ansi = RegEx.create_from_string("\u001b\\[[0-9;]*m")
+	var text = ansi.sub(FileAccess.get_file_as_string(run.log), "", true)
 	var result = null
 	var errors = []
 	for line in text.split("\n"):
