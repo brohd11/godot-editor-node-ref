@@ -8,6 +8,7 @@ const TEXT_FILE_TYPES = ["gd", "json", "cfg", "txt", "ini", "md"]
 
 var text_file_types:= []
 
+#! gdp-strip-cast PE_STRIP_CAST_SCRIPT
 const PE_STRIP_CAST_SCRIPT = preload("res://addons/_lib/editor_node_ref/src/script_editor/script_list_manager.gd")
 static func get_singleton_name() -> String:
 	return "ScriptListManager"

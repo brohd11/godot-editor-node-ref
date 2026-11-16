@@ -1,5 +1,5 @@
 #! namespace EditorNodes class EditorNodeRef
-class_name EditorNodeRef #! singleton-module
+class_name EditorNodeRef
 extends "res://addons/_lib/singleton/src/singleton_base.gd" #! ext Singletons.Base
 
 const SignalHandler = UtilR.Signals.SignalHandler
@@ -18,6 +18,7 @@ const _GET_REF_SCRIPTS = {
 }
 
 const _NODE_NAME = "EditorNodeRef"
+#! gdp-strip-cast PE_STRIP_CAST_SCRIPT
 const PE_STRIP_CAST_SCRIPT = preload("res://addons/_lib/editor_node_ref/src/editor_node_ref.gd")
 
 static func get_singleton_name():
